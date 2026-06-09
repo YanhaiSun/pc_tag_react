@@ -116,10 +116,14 @@ npm run build
 
 3. 配置服务器（以Nginx为例）：
    ```nginx
-   location /pc-tag {
-       alias /path/to/dist/;
+   server {
+       server_name tag.hongqiao.click;
+       root /path/to/dist/;
        index index.html index.htm;
-       try_files $uri $uri/ /pc-tag/index.html;
+
+       location / {
+           try_files $uri $uri/ /index.html;
+       }
    }
    ```
 
